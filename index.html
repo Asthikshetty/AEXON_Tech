@@ -1689,21 +1689,23 @@
       }, 3500);
     }, 1200);
   }
-  // Optional interactivity for the "GET STARTED" buttons
-// You can replace the alert with actual navigation or form handling.
+// pricing.js - Redirect to Contact Section
 document.addEventListener('DOMContentLoaded', function() {
   const buttons = document.querySelectorAll('.price-btn');
   
   buttons.forEach(btn => {
     btn.addEventListener('click', function(e) {
       e.preventDefault();
-      const plan = this.getAttribute('data-plan') || 'selected plan';
-      // Example action: redirect to contact page or show a message
-      // Uncomment the line below to redirect:
-      // window.location.href = '/contact?plan=' + encodeURIComponent(plan);
       
-      // For demo, show an alert:
-      alert(`You selected the ${plan} plan. We'll get back to you shortly!`);
+      // Find the contact section on the page
+      const contactSection = document.getElementById('contact');
+      if (contactSection) {
+        // Smooth scroll to contact section
+        contactSection.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        // Fallback: try to redirect via hash
+        window.location.href = '#contact';
+      }
     });
   });
 });
