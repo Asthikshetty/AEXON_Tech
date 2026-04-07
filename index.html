@@ -765,6 +765,177 @@
       .footer-inner { grid-template-columns: 1fr; }
       .footer-bottom { flex-direction: column; text-align: center; }
     }
+/* Pricing grid */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+  margin-top: 16px;
+}
+
+/* Individual card */
+.pricing-card {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-xl);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.pricing-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--yellow);
+}
+
+/* "MOST POPULAR" badge */
+.pricing-badge {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  background: var(--yellow);
+  color: var(--ink);
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 4px 12px;
+  border-radius: 60px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  z-index: 2;
+}
+
+/* Card header */
+.pricing-header-card {
+  padding: 28px 28px 16px;
+  border-bottom: 2px solid var(--yellow-pale);
+}
+.plan-name {
+  font-size: 1.55rem;
+  font-weight: 800;
+  font-family: 'Outfit', sans-serif;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  margin-bottom: 6px;
+}
+.plan-sub {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--yellow-dark);
+  margin-bottom: 12px;
+}
+.plan-tagline {
+  font-size: 0.78rem;
+  color: var(--slate);
+  font-weight: 500;
+  background: var(--surface);
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 50px;
+  margin-top: 6px;
+}
+
+/* Features list */
+.pricing-features {
+  padding: 24px 28px;
+  flex: 1;
+}
+.pricing-features ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.pricing-features li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.82rem;
+  color: var(--slate);
+  line-height: 1.45;
+}
+.pricing-features li strong {
+  font-weight: 700;
+  color: var(--ink);
+}
+.check-icon {
+  display: inline-flex;
+  width: 18px;
+  height: 18px;
+  background: var(--yellow-pale);
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  color: var(--yellow-dark);
+  font-size: 0.7rem;
+  flex-shrink: 0;
+}
+.check-empty {
+  background: transparent;
+  border: 1.5px solid var(--border);
+  color: var(--slate);
+}
+
+/* Button */
+.pricing-action {
+  padding: 0 28px 32px;
+  margin-top: auto;
+}
+.price-btn {
+  width: 100%;
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: 50px;
+  padding: 12px 0;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--ink);
+  text-align: center;
+  transition: var(--transition);
+  display: block;
+  cursor: pointer;
+}
+.price-btn:hover {
+  background: var(--yellow);
+  border-color: var(--yellow);
+  color: var(--ink);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(245, 197, 24, 0.25);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .pricing-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+  body {
+    padding: 1.5rem;
+  }
+}
+@media (max-width: 640px) {
+  .pricing-grid {
+    grid-template-columns: 1fr;
+  }
+  body {
+    padding: 1rem;
+  }
+  .pricing-header-card {
+    padding: 20px 20px 12px;
+  }
+  .pricing-features {
+    padding: 20px;
+  }
+  .pricing-action {
+    padding: 0 20px 24px;
+  }
+}
   </style>
 </head>
 <body>
@@ -843,7 +1014,7 @@
   <div class="container">
     <div class="stats-inner">
       <div class="stat-item">
-        <span class="stat-num">50+</span>
+        <span class="stat-num">100+</span>
         <span class="stat-label">Websites Delivered</span>
       </div>
       <div class="stat-item">
@@ -870,44 +1041,106 @@
       <h2 class="section-title">Services Built Around<br><span>Your Business Goals</span></h2>
       <p class="section-sub">Every service is tailored to help your specific business attract more customers and build credibility online.</p>
     </div>
-    <div class="services-grid">
-      <div class="service-card reveal">
-        <div class="service-icon">🌐</div>
-        <h3>Business Website Development</h3>
-        <p>Professional websites that build trust and attract customers to your business, crafted for real-world results.</p>
-        <span class="service-arrow">Learn more →</span>
+  <div class="pricing-container">
+    <!-- Section header -->
+    <div class="pricing-header">
+      <div class="label-pill">Flexible Plans</div>
+      <h2 class="section-title">Choose the perfect <span>plan for your growth</span></h2>
+      <p class="section-sub">Transparent packages — from essential online presence to AI-powered business solutions.</p>
+    </div>
+
+    <!-- Pricing grid -->
+    <div class="pricing-grid">
+      <!-- BASIC – Website Only -->
+      <div class="pricing-card">
+        <div class="pricing-header-card">
+          <div class="plan-name">BASIC</div>
+          <div class="plan-sub">Website Only</div>
+          <div class="plan-tagline">Start strong online</div>
+        </div>
+        <div class="pricing-features">
+          <ul>
+            <li><span class="check-icon">✓</span> <strong>5 Pages Website</strong></li>
+            <li><span class="check-icon">✓</span> Responsive Design</li>
+            <li><span class="check-icon">✓</span> Contact Form</li>
+            <li><span class="check-icon">✓</span> Basic SEO Setup</li>
+            <li><span class="check-icon">✓</span> Speed Optimization</li>
+            <li><span class="check-icon check-empty">◌</span> Custom UI Design</li>
+          </ul>
+        </div>
+        <div class="pricing-action">
+          <button class="price-btn" data-plan="Basic">GET STARTED →</button>
+        </div>
       </div>
-      <div class="service-card reveal">
-        <div class="service-icon">🍴</div>
-        <h3>Restaurant Website Design</h3>
-        <p>Showcase your menus, ambiance, and specials beautifully. Drive more table bookings with an appetite-appealing site.</p>
-        <span class="service-arrow">Learn more →</span>
+
+      <!-- STANDARD – Website+Design -->
+      <div class="pricing-card">
+        <div class="pricing-header-card">
+          <div class="plan-name">STANDARD</div>
+          <div class="plan-sub">Website+Design</div>
+          <div class="plan-tagline">Elevate your brand</div>
+        </div>
+        <div class="pricing-features">
+          <ul>
+            <li><span class="check-icon">✓</span> <strong>10 Pages Website</strong></li>
+            <li><span class="check-icon">✓</span> Responsive Design</li>
+            <li><span class="check-icon">✓</span> Custom UI Design</li>
+            <li><span class="check-icon">✓</span> Logo Design</li>
+            <li><span class="check-icon">✓</span> Contact Form + Basic SEO</li>
+            <li><span class="check-icon">✓</span> Social Media Setup</li>
+          </ul>
+        </div>
+        <div class="pricing-action">
+          <button class="price-btn" data-plan="Standard">GET STARTED →</button>
+        </div>
       </div>
-      <div class="service-card reveal">
-        <div class="service-icon">🏭</div>
-        <h3>Factory Website Solutions</h3>
-        <p>Display your products and capabilities. Handle bulk inquiries efficiently and attract wholesale buyers worldwide.</p>
-        <span class="service-arrow">Learn more →</span>
+
+      <!-- PREMIUM – Complete Solution + MOST POPULAR badge -->
+      <div class="pricing-card">
+        <div class="pricing-badge">🔥 MOST POPULAR</div>
+        <div class="pricing-header-card">
+          <div class="plan-name">PREMIUM</div>
+          <div class="plan-sub">Complete Solution</div>
+          <div class="plan-tagline">All-in-one growth</div>
+        </div>
+        <div class="pricing-features">
+          <ul>
+            <li><span class="check-icon">✓</span> <strong>Unlimited Pages</strong> / Full Website</li>
+            <li><span class="check-icon">✓</span> Responsive + Custom UI Design</li>
+            <li><span class="check-icon">✓</span> SEO Automation & Advanced Analytics</li>
+            <li><span class="check-icon">✓</span> Google Ads Setup</li>
+            <li><span class="check-icon">✓</span> Social Media Setup</li>
+            <li><span class="check-icon">✓</span> Monthly Reporting & Priority Support</li>
+          </ul>
+        </div>
+        <div class="pricing-action">
+          <button class="price-btn" data-plan="Premium">GET STARTED →</button>
+        </div>
       </div>
-      <div class="service-card reveal">
-        <div class="service-icon">📱</div>
-        <h3>Mobile Responsive Design</h3>
-        <p>Your website works flawlessly on every device — phones, tablets, and desktops — so you never lose a customer.</p>
-        <span class="service-arrow">Learn more →</span>
-      </div>
-      <div class="service-card reveal">
-        <div class="service-icon">🛠️</div>
-        <h3>Website Maintenance & Support</h3>
-        <p>Keep your website updated, secure, and running smoothly. We handle everything so you can focus on your business.</p>
-        <span class="service-arrow">Learn more →</span>
-      </div>
-      <div class="service-card reveal">
-        <div class="service-icon">📈</div>
-        <h3>SEO & Performance</h3>
-        <p>Fast-loading, SEO-optimized websites that rank on Google and bring organic customers to your business daily.</p>
-        <span class="service-arrow">Learn more →</span>
+
+      <!-- ADVANCED – Growth Partner -->
+      <div class="pricing-card">
+        <div class="pricing-header-card">
+          <div class="plan-name">ADVANCED</div>
+          <div class="plan-sub">Growth Partner</div>
+          <div class="plan-tagline">AI + priority scale</div>
+        </div>
+        <div class="pricing-features">
+          <ul>
+            <li><span class="check-icon">✓</span> Everything in Premium +</li>
+            <li><span class="check-icon">✓</span> AI Automation (Chatbots & CRM)</li>
+            <li><span class="check-icon">✓</span> Lead Management System</li>
+            <li><span class="check-icon">✓</span> Priority Support (24/7)</li>
+            <li><span class="check-icon">✓</span> Dedicated Account Manager</li>
+            <li><span class="check-icon">✓</span> Advanced Performance Audits</li>
+          </ul>
+        </div>
+        <div class="pricing-action">
+          <button class="price-btn" data-plan="Advanced">GET STARTED →</button>
+        </div>
       </div>
     </div>
+  </div>
     <div class="services-note reveal">
       ✦ &nbsp; Every website is custom-built based on your specific business needs — no templates, no shortcuts.
     </div>
@@ -1172,6 +1405,9 @@
             <span class="skill-chip">SEO</span>
             <span class="skill-chip">UI Design</span>
             <span class="skill-chip">WordPress</span>
+            <span class="skill-chip">Graphics Design</span>
+            <span class="skill-chip">AI&ML</span>
+            <span class="skill-chip">Digital Marketing</span>
           </div>
           <div class="mini-stats">
             <div class="mini-stat"><strong>50+</strong><span>Projects Done</span></div>
@@ -1234,7 +1470,7 @@
             <div class="ci-icon">✉️</div>
             <div class="ci-text">
               <span>Email</span>
-              <a href="mailto:asthikshetty0@gmail.com">asthikshetty0@gmail.com</a>
+              <a href="mailto:aexontechs@gmail.com">aexontechs@gmail.com</a>
             </div>
           </div>
           <div class="contact-item">
@@ -1329,7 +1565,7 @@
         <h5>Contact</h5>
         <ul>
           <li><a href="tel:+916361924870">+91 63619 24870</a></li>
-          <li><a href="mailto:asthikshetty0@gmail.com">asthikshetty0@gmail.com</a></li>
+          <li><a href="mailto:aexontechs@gmail.com">aexontechs@gmail.com</a></li>
           <li><a href="https://wa.me/916361924870" target="_blank" rel="noopener">WhatsApp Us</a></li>
         </ul>
       </div>
@@ -1453,6 +1689,24 @@
       }, 3500);
     }, 1200);
   }
+  // Optional interactivity for the "GET STARTED" buttons
+// You can replace the alert with actual navigation or form handling.
+document.addEventListener('DOMContentLoaded', function() {
+  const buttons = document.querySelectorAll('.price-btn');
+  
+  buttons.forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      const plan = this.getAttribute('data-plan') || 'selected plan';
+      // Example action: redirect to contact page or show a message
+      // Uncomment the line below to redirect:
+      // window.location.href = '/contact?plan=' + encodeURIComponent(plan);
+      
+      // For demo, show an alert:
+      alert(`You selected the ${plan} plan. We'll get back to you shortly!`);
+    });
+  });
+});
 </script>
 </body>
 </html>
